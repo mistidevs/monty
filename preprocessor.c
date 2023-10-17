@@ -23,8 +23,7 @@ while (line[i] != ' ')
 if (line[i] == '\n' || line[i] == '\0')
 	return (NULL);
 unpadded[j] = line[i];
-i++;
-j++;
+i++, j++;
 if (line[i] == ' ')
 {
 	while (line[i] == ' ')
@@ -41,7 +40,6 @@ while (line[i] != ' ' && line[i] != '\n' && line[i] != '\0')
 	i++, j++;
 }
 unpadded[j] = '\0';
-}
 
 return (unpadded);
 }
@@ -99,7 +97,7 @@ char **strtow(char *str, const char *d)
  * Return: 1 if true or 0 if false
  */
 
-int is_delim(char c, char *delim)
+int is_delim(char c, const char *delim)
 {
 	while (*delim)
 		if (*delim++ == c)

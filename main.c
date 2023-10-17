@@ -16,7 +16,7 @@ char __attribute__((unused)) *str2 = "   push 6";
 char __attribute__((unused)) *str3 = "   push 6   ";
 char __attribute__((unused)) *str4 = "    push    6    ";
 
-unpads = unpad(str4);
+unpads = unpad(str2);
 if (unpads == NULL)
 	printf("Error: unpadding failed");
 else
