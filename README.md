@@ -2,7 +2,8 @@
 <h2>Train of Thought</h2>
 <p>
   1. Read from the file.<br>
-  2. Store the content in a buffer.
+  2. Store the content in a buffer.<br>
+  3. Preprocess commands by removing padding
 </p>
 
 <h2>Notes</h2>
