@@ -1,8 +1,10 @@
 #ifndef MONTY_H
 #define MONTY_H
-
-extern int line_number;
-extern stack_t *stack_head;
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <unistd.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -34,7 +36,14 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**** EXTERNS ***/
+extern int line_number;
+extern stack_t *stack_head;
+
 /**** PREPROCESSOR *****/
 char *unpad(char *line);
+char **strtow(char *str, const char *d);
+int is_delim(char c, const char *delim);
+int count_words(char *str, const char *delimiter);
 
 #endif
