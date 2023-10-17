@@ -5,6 +5,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <string.h>
+#include <fcntl.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -45,5 +46,8 @@ char *unpad(char *line);
 char **strtow(char *str, const char *d);
 int is_delim(char c, const char *delim);
 int count_words(char *str, const char *delimiter);
+
+/***** FILE PROCESSING ****/
+char *open_file(char *filename);
 
 #endif

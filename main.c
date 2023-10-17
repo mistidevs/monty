@@ -8,19 +8,39 @@
 * Return: suitable integer
 */
 
-int main(int __attribute__((unused)) ac, char __attribute__((unused)) **av)
+int main(int ac, char **av)
 {
-char *unpads;
-char __attribute__((unused)) *str1 = "push 6";
-char __attribute__((unused)) *str2 = "   push 6";
-char __attribute__((unused)) *str3 = "   push 6   ";
-char __attribute__((unused)) *str4 = "    push    6    ";
+char *raw, *command;
+char **commands;
+int i;
 
-unpads = unpad(str2);
-if (unpads == NULL)
-	printf("Error: unpadding failed");
-else
-	printf("%s\n", unpads);
+if (ac != 2)
+{
+	fprintf(stderr, "USAGE: monty file\n");
+	exit(EXIT_FAILURE);
+}
 
+raw = open_file(av[1]);
+if (raw == NULL)
+	exit(EXIT_FAILURE);
+
+commands = strtow(raw, "\n");
+if (commands == NULL)
+{
+	fprintf(stderr, "Command splitting failed");
+	free(raw);
+	exit(EXIT_FAILURE);
+}
+free(raw);
+
+for (i = 0; commands[i] != NULL; i++)
+{
+	command = unpad(commands[i]);
+	free(commands[i]);
+	printf("%s\n", command);
+	free(command);
+}
+
+free(commands);
 return (0);
 }

@@ -1,6 +1,7 @@
 #include "monty.h"
 
-/** unpad - removing white space
+/**
+* unpad - removing white space
 * @line: pointer to line to unpad
 *
 * Return: pointer to unpadded line
@@ -8,40 +9,23 @@
 
 char *unpad(char *line)
 {
-char *unpadded;
-int i = 0, j = 0;
+char *new_line = malloc(strlen(line) + 1);
+int i, j = 0;
 
-unpadded = malloc(strlen(line) * sizeof(char));
-while (line[i] == ' ')
-	i++;
-
-while (line[i] != ' ')
+for (i = 0; line[i] != '\0' ; i++)
 {
-	unpadded[j] = line[i];
-	i++, j++;
-}
-if (line[i] == '\n' || line[i] == '\0')
-	return (NULL);
-unpadded[j] = line[i];
-i++, j++;
-if (line[i] == ' ')
-{
-	while (line[i] == ' ')
+	if (line[i] != ' ' && line[i] != '\n')
 	{
-		if (line[i] == '\n' || line[i] == '\0')
-			return (NULL);
-		i++, j++;
+		new_line[j++] = line[i];
+	}
+	else if (i > 0 && line[i - 1] != ' ' && line[i - 1] != '\n')
+	{
+		new_line[j++] = ' ';
 	}
 }
 
-while (line[i] != ' ' && line[i] != '\n' && line[i] != '\0')
-{
-	unpadded[j] = line[i];
-	i++, j++;
-}
-unpadded[j] = '\0';
-
-return (unpadded);
+new_line[j] = '\0';
+return (new_line);
 }
 
 
