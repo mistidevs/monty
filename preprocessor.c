@@ -8,41 +8,39 @@
 
 char *unpad(char *line)
 {
-char *unpadded = line;
+char *unpadded;
 int i = 0, j = 0;
 
+unpadded = malloc(strlen(line) * sizeof(char));
+while (line[i] == ' ')
+	i++;
+
+while (line[i] != ' ')
+{
+	unpadded[j] = line[i];
+	i++, j++;
+}
+if (line[i] == '\n' || line[i] == '\0')
+	return (NULL);
+unpadded[j] = line[i];
+i++;
+j++;
 if (line[i] == ' ')
 {
 	while (line[i] == ' ')
-		i++;
+	{
+		if (line[i] == '\n' || line[i] == '\0')
+			return (NULL);
+		i++, j++;
+	}
 }
 
-if (line[i] != " ")
+while (line[i] != ' ' && line[i] != '\n' && line[i] != '\0')
 {
-	while (line[i] != ' ')
-	{
-		unpadded[j] = line[i];
-		i++, j++;
-	}
-	if (line[i] == '\n' || line[i] == '\0')
-		return (NULL);
 	unpadded[j] = line[i];
 	i++, j++;
-	if (line[i] == " ")
-	{
-		while (line[i] == ' ')
-		{
-			if (line[i] == '\n' || line[i] == '\0')
-				return (NULL);
-			i++, j++;
-		}
-	}
-	while (line[i] != ' ' || line[i] != '\n' || line[i] != '\0')
-	{
-		unpadded[j] = line[i];
-		i++, j++;
-	}
-	unpadded[j] = '\0';
+}
+unpadded[j] = '\0';
 }
 
 return (unpadded);
