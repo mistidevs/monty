@@ -1,6 +1,6 @@
 #include "monty.h"
 
-stack_t **stack;
+stack_t *stack;
 /**
 * main - monty interpreter
 * @ac: argument counter
@@ -34,12 +34,7 @@ if (commands == NULL)
 }
 free(raw);
 
-stack = malloc(sizeof(stack_t *));
-if (stack == NULL)
-{
-	fprintf(stderr, "Error: malloc failed\n");
-	exit(EXIT_FAILURE);
-}
+stack = NULL;
 for (i = 0; commands[i] != NULL; i++)
 {
 	command = unpad(commands[i]);
@@ -51,11 +46,13 @@ for (i = 0; commands[i] != NULL; i++)
 		free(command);
 		exit(EXIT_FAILURE);
 	}
-	push(stack, atoi(ops[1]));
+	push(&stack, atoi(ops[1]));
 	free(ops[0]), free(ops[1]), free(ops);
 	free(command);
 }
 
-free(stack), free(commands);
+printf("%d\n", i);
+free_stack(stack, i);
+free(commands);
 return (0);
 }

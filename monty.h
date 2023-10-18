@@ -39,7 +39,7 @@ typedef struct instruction_s
 
 /**** EXTERNS ***/
 extern int line_number;
-extern stack_t **stack;
+extern stack_t *stack;
 
 /**** PREPROCESSOR *****/
 char *unpad(char *line);
@@ -53,5 +53,8 @@ char *open_file(char *filename);
 /***** OPS **********/
 void (*op_select(char *opcode))(stack_t **, unsigned int);
 void push(stack_t **stack, unsigned int line_number);
+
+/******* UTILITIES **********/
+void free_stack(stack_t *stack, unsigned int len);
 
 #endif
