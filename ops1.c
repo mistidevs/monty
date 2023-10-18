@@ -12,7 +12,7 @@ void (*op_select(char *opcode))(stack_t **, unsigned int)
 int i;
 
 instruction_t instructions[] = {
-	{"push", push}, {"pall", pall}, {"pint", pint}, {NULL, NULL}
+	{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {NULL, NULL}
 };
 
 for (i = 0; instructions[i].opcode != NULL; i++)
@@ -88,7 +88,7 @@ for (i = 0; curr != NULL; i++)
 /**
 * pint - printing the top element of a stack
 * @stack: pointer to top
-* @line_number: unused
+* @line_number: used
 *
 * Return: void
 */
@@ -102,4 +102,36 @@ if (*stack == NULL)
 }
 
 printf("%d\n", (*stack)->n);
+}
+
+/**
+* pop - deleting the top element of a stack
+* @stack: pointer to top
+* @line_number: used
+*
+* Return: void
+*/
+
+void pop(stack_t **stack, unsigned int line_number)
+{
+stack_t *curr, *prev, *next;
+
+if (*stack == NULL)
+{
+	fprintf(stderr, "L%d: can't pop, stack empty\n", line_number);
+	exit(EXIT_FAILURE);
+}
+
+curr = *stack;
+prev = NULL;
+if (prev == NULL)
+	*stack = curr->next;
+
+next = curr->next;
+if (prev != NULL)
+	prev->next = next;
+if (next != NULL)
+	next->prev = prev;
+
+free(curr);
 }
