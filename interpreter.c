@@ -41,7 +41,7 @@ for (i = 0; commands[i] != NULL; i++)
 	if (ops[1] != NULL)
 		op_select(ops[0])(&stack, atoi(ops[1]));
 	else
-		op_select(ops[0])(&stack, 0);
+		op_select(ops[0])(&stack, (i + 1));
 	free_op_list(ops), free(command); }
 free_stack(stack), free_op_list(commands);
 return (0);

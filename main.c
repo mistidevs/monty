@@ -12,7 +12,6 @@ int main(int ac, char **av)
 {
 char *raw;
 char **commands;
-int i;
 
 if (ac != 2)
 {
@@ -33,12 +32,6 @@ if (commands == NULL)
 }
 free(raw);
 
-for (i = 0; commands[i] != NULL; i++)
-{
-	if (commands[i][0] == '\0')
-		printf("Empty\n");
-	printf("%s\n", commands[i]);
-}
 if (interpret(commands) == 1)
 	exit(EXIT_FAILURE);
 

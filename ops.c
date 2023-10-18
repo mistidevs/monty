@@ -12,7 +12,7 @@ void (*op_select(char *opcode))(stack_t **, unsigned int)
 int i;
 
 instruction_t instructions[] = {
-	{"push", push}, {"pall", pall}, {NULL, NULL}
+	{"push", push}, {"pall", pall}, {"pint", pint}, {NULL, NULL}
 };
 
 for (i = 0; instructions[i].opcode != NULL; i++)
@@ -83,4 +83,23 @@ for (i = 0; curr != NULL; i++)
 	printf("%d\n", curr->n);
 	curr = curr->next;
 }
+}
+
+/**
+* pint - printing the top element of a stack
+* @stack: pointer to top
+* @line_number: unused
+*
+* Return: void
+*/
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+if (*stack == NULL)
+{
+	fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+	exit(EXIT_FAILURE);
+}
+
+printf("%d\n", (*stack)->n);
 }

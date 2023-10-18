@@ -56,7 +56,7 @@ int op_check(char *opcode)
 {
 int i;
 
-char *op_codes[3] = {"push", "pall", NULL};
+char *op_codes[4] = {"push", "pall", "pint", NULL};
 
 for (i = 0; op_codes[i] != NULL; i++)
 {
