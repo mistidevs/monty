@@ -27,7 +27,7 @@ return (NULL);
 /**
  * push - adds node to a stack
  * @stack: the pointer to the pointer to the top of the stack
- * @n: number to add as content of node
+ * @line_number: number to add as content of node
  *
  * Return: pointer to first node
  */

@@ -1,6 +1,5 @@
 #include "monty.h"
 
-stack_t *stack;
 /**
 * main - monty interpreter
 * @ac: argument counter
@@ -14,6 +13,7 @@ int main(int ac, char **av)
 char *raw, *command;
 char **commands, **ops;
 int i;
+stack_t *stack;
 
 if (ac != 2)
 {
@@ -28,7 +28,7 @@ if (raw == NULL)
 commands = strtow(raw, "\n");
 if (commands == NULL)
 {
-	fprintf(stderr, "Error: malloc failed");
+	fprintf(stderr, "Error: malloc failed\n");
 	free(raw);
 	exit(EXIT_FAILURE);
 }
@@ -38,21 +38,33 @@ stack = NULL;
 for (i = 0; commands[i] != NULL; i++)
 {
 	command = unpad(commands[i]);
-	free(commands[i]);
 	ops = strtow(command, " ");
 	if (ops == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free(command);
+		free_op_list(commands), free_stack(stack, i), free(command);
 		exit(EXIT_FAILURE);
 	}
-	push(&stack, atoi(ops[1]));
-	free(ops[0]), free(ops[1]), free(ops);
-	free(command);
+	if (op_check(ops[0]) == 1)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", (i + 1), ops[0]);
+		free_op_list(commands), free_op_list(ops), free_stack(stack, i), free(command);
+		exit(EXIT_FAILURE);
+	}
+	if (strcmp(ops[0], "push") == 0)
+	{
+		if (push_check(ops[1]) == 1)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", i + 1);
+			free_op_list(commands), free_op_list(ops);
+			free(command), free_stack(stack, i);
+			exit(EXIT_FAILURE);
+		}
+	}
+	op_select(ops[0])(&stack, atoi(ops[1]));
+	free_op_list(ops), free(command);
 }
 
-printf("%d\n", i);
-free_stack(stack, i);
-free(commands);
+free_stack(stack, i), free_op_list(commands);
 return (0);
 }
