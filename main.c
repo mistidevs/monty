@@ -24,7 +24,6 @@ if (raw == NULL)
 	exit(EXIT_FAILURE);
 
 filter = replace_double_newline(raw);
-printf("%s", filter);
 commands = strtow(filter, "\n");
 if (commands == NULL)
 {
