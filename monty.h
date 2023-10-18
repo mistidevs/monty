@@ -39,7 +39,7 @@ typedef struct instruction_s
 
 /**** EXTERNS ***/
 extern int line_number;
-extern stack_t *stack_head;
+extern stack_t **stack;
 
 /**** PREPROCESSOR *****/
 char *unpad(char *line);
@@ -49,5 +49,9 @@ int count_words(char *str, const char *delimiter);
 
 /***** FILE PROCESSING ****/
 char *open_file(char *filename);
+
+/***** OPS **********/
+void (*op_select(char *opcode))(stack_t **, unsigned int);
+void push(stack_t **stack, unsigned int line_number);
 
 #endif
