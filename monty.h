@@ -63,4 +63,7 @@ int push_check(char *var);
 int op_check(char *opcode);
 void free_op_list(char **op_list);
 
+/***** INTERPRETER *****/
+int interpret(char **commands);
+
 #endif
