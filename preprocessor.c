@@ -9,7 +9,7 @@
 
 int check_new_line(char *line)
 {
-if (line[0] == '\0' && strlen(line) == 1)
+if ((line[0] == '\0' && strlen(line) == 1) || strlen(line) == 0)
 	return (0);
 
 return (1);
@@ -87,24 +87,31 @@ char **strtow(char *str, const char *d)
 	s = malloc((1 + numwords) * sizeof(char *));
 	if (!s)
 		return (NULL);
-	for (i = 0, j = 0; j < numwords; j++)
+	for (i = 0, j = 0; i < (int)strlen(str); i++)
 	{
-		while (is_delim(str[i], d))
-			i++;
-		k = 0;
-		while (!is_delim(str[i + k], d) && str[i + k])
-			k++;
-		s[j] = malloc((k + 1) * sizeof(char));
-		if (!s[j])
+		if (is_delim(str[i], d))
 		{
-			for (k = 0; k < j; k++)
-				free(s[k]);
-			free(s);
-			return (NULL);
+			if (i > 0 && is_delim(str[i - 1], d))
+				s[j++] = "";
 		}
-		for (m = 0; m < k; m++)
-			s[j][m] = str[i++];
-		s[j][m] = 0;
+		else
+		{
+			k = 0;
+			while (!is_delim(str[i + k], d) && str[i + k])
+				k++;
+			s[j] = malloc((k + 1) * sizeof(char));
+			if (!s[j])
+			{
+				for (k = 0; k < j; k++)
+					free(s[k]);
+				free(s);
+			return (NULL);
+			}
+			for (m = 0; m < k; m++)
+				s[j][m] = str[i++];
+			s[j][m] = '\0';
+			j++;
+		}
 	}
 	s[j] = NULL;
 	return (s);
