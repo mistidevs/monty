@@ -12,7 +12,8 @@ void (*op_select(char *opcode))(stack_t **, unsigned int)
 int i;
 
 instruction_t instructions[] = {
-	{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {NULL, NULL}
+	{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
+	{"nop", nop}, {NULL, NULL}
 };
 
 for (i = 0; instructions[i].opcode != NULL; i++)
