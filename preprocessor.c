@@ -89,38 +89,21 @@ char **strtow(char *str, const char *d)
 		return (NULL);
 	for (i = 0, j = 0; i < (int)strlen(str); i++)
 	{
-		if (is_delim(str[i], d))
+		k = 0;
+		while (!is_delim(str[i + k], d) && str[i + k])
+			k++;
+		s[j] = malloc((k + 1) * sizeof(char));
+		if (!s[j])
 		{
-			if (i > 0 && is_delim(str[i - 1], d))
-			{
-				s[j] = malloc(2 * sizeof(char));
-				if (!s[j])
-				{
-					for (k = 0; k < j; k++)
-						free(s[k]);
-					free(s);
-					return (NULL); }
-				s[j][0] = ' ', s[j][1] = '\0', j++;
-			}
+			for (k = 0; k < j; k++)
+				free(s[k]);
+			free(s);
+			return (NULL);
 		}
-		else
-		{
-			k = 0;
-			while (!is_delim(str[i + k], d) && str[i + k])
-				k++;
-			s[j] = malloc((k + 1) * sizeof(char));
-			if (!s[j])
-			{
-				for (k = 0; k < j; k++)
-					free(s[k]);
-				free(s);
-				return (NULL);
-			}
-			for (m = 0; m < k; m++)
-				s[j][m] = str[i++];
-			s[j][m] = '\0';
-			j++;
-		}
+		for (m = 0; m < k; m++)
+			s[j][m] = str[i++];
+		s[j][m] = '\0';
+		j++;
 	}
 	s[j] = NULL;
 	return (s);
