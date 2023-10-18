@@ -34,10 +34,25 @@ if (commands == NULL)
 }
 free(raw);
 
+for (i = 0; commands[i] != NULL; i++)
+{
+	printf("%s\n", commands[i]);
+}
+printf("%d", i);
 stack = NULL;
 for (i = 0; commands[i] != NULL; i++)
 {
+	if (check_new_line(commands[i]) == 0)
+	{
+		free_op_list(commands), free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
 	command = unpad(commands[i]);
+	if (*command == '\0')
+	{
+		free(command), free_op_list(commands), free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
 	ops = strtow(command, " ");
 	if (ops == NULL)
 	{

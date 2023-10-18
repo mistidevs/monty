@@ -43,6 +43,7 @@ extern unsigned int line_number;
 extern stack_t *stack;
 
 /**** PREPROCESSOR *****/
+int check_new_line(char *line);
 char *unpad(char *line);
 char **strtow(char *str, const char *d);
 int is_delim(char c, const char *delim);
