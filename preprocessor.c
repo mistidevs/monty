@@ -1,6 +1,21 @@
 #include "monty.h"
 
 /**
+* check_new_line - checks if line only has new line character
+* @line: line to check
+*
+* Return: 0 if success; 1 if fail
+*/
+
+int check_new_line(char *line)
+{
+if (line[0] == '\0' && strlen(line) == 1)
+	return (0);
+
+return (1);
+}
+
+/**
 * unpad - removing white space
 * @line: pointer to line to unpad
 *
@@ -9,9 +24,30 @@
 
 char *unpad(char *line)
 {
-char *new_line = malloc(strlen(line) + 1);
+char *new_line, *end, *empty_str;
 int i, j = 0;
 
+while (*line && (*line == ' ' || *line == '\n'))
+	++line;
+
+end = line + strlen(line) - 1;
+while (end > line && (*end == ' ' || *end == '\t'))
+	--end;
+
+*(end + 1) = '\0';
+if (*line == '\0' || (strlen(line) == 1 && *line == '\n'))
+{
+	empty_str = malloc(1);
+	if (!empty_str)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	*empty_str = '\0';
+	return (empty_str);
+}
+
+new_line = malloc(strlen(line) + 1);
 for (i = 0; line[i] != '\0' ; i++)
 {
 	if (line[i] != ' ' && line[i] != '\n')
