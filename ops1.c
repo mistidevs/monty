@@ -125,8 +125,13 @@ if (*stack == NULL)
 
 curr = *stack;
 prev = NULL;
-if (prev == NULL)
-	*stack = curr->next;
+*stack = curr->next;
+
+if (*stack == NULL)
+{
+	fprintf(stderr, "L%d: can't pop, stack empty\n", line_number);
+	exit(EXIT_FAILURE);
+}
 
 next = curr->next;
 if (prev != NULL)
