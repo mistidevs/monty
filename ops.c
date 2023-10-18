@@ -12,7 +12,7 @@ void (*op_select(char *opcode))(stack_t **, unsigned int)
 int i;
 
 instruction_t instructions[] = {
-	{"push", push}, {NULL, NULL}
+	{"push", push}, {"pall", pall}, {NULL, NULL}
 };
 
 for (i = 0; instructions[i].opcode != NULL; i++)
@@ -52,9 +52,36 @@ if (*stack == NULL)
 	*stack = new_node;
 	new_node->next = NULL;
 }
+else
+{
+	temp = *stack;
+	*stack = new_node;
+	new_node->next = temp;
+	temp->prev = new_node;
+}
 
-temp = *stack;
-*stack = new_node;
-new_node->next = temp;
-temp->prev = new_node;
+stack_len++;
+}
+
+/**
+* pall - printing a stack
+* @stack: pointer to top
+*
+* Return: void
+*/
+
+void pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
+{
+stack_t *curr;
+unsigned int i;
+
+if (*stack == NULL)
+	exit(EXIT_FAILURE);
+
+curr = *stack;
+for (i = 0; i < stack_len; i++)
+{
+	printf("%d\n", curr->n);
+	curr = curr->next;
+}
 }

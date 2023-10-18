@@ -8,14 +8,14 @@
 * Return: void
 */
 
-void free_stack(stack_t *stack, unsigned int len)
+void free_stack(stack_t *stack)
 {
 stack_t *curr, *next;
 unsigned int i = 0;
 
 curr = stack;
 
-while (i < len)
+while (i < stack_len)
 {
 	next = curr->next;
 	free(curr);
