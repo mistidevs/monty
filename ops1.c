@@ -115,7 +115,7 @@ printf("%d\n", (*stack)->n);
 
 void pop(stack_t **stack, unsigned int line_number)
 {
-stack_t *curr, *prev, *next;
+stack_t *top;
 
 if (*stack == NULL)
 {
@@ -123,21 +123,7 @@ if (*stack == NULL)
 	exit(EXIT_FAILURE);
 }
 
-curr = *stack;
-prev = NULL;
-*stack = curr->next;
-
-if (*stack == NULL)
-{
-	fprintf(stderr, "L%d: can't pop, stack empty\n", line_number);
-	exit(EXIT_FAILURE);
-}
-
-next = curr->next;
-if (prev != NULL)
-	prev->next = next;
-if (next != NULL)
-	next->prev = prev;
-
-free(curr);
+top = *stack;
+*stack = top->next;
+free(top);
 }
