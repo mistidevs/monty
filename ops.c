@@ -59,8 +59,6 @@ else
 	new_node->next = temp;
 	temp->prev = new_node;
 }
-
-stack_len++;
 }
 
 /**
@@ -79,7 +77,7 @@ if (*stack == NULL)
 	exit(EXIT_FAILURE);
 
 curr = *stack;
-for (i = 0; i < stack_len; i++)
+for (i = 0; curr != NULL; i++)
 {
 	printf("%d\n", curr->n);
 	curr = curr->next;

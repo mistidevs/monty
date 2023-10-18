@@ -41,7 +41,6 @@ typedef struct instruction_s
 /**** EXTERNS ***/
 extern unsigned int line_number;
 extern stack_t *stack;
-extern unsigned int stack_len;
 
 /**** PREPROCESSOR *****/
 char *unpad(char *line);

@@ -1,6 +1,5 @@
 #include "monty.h"
 
-unsigned int stack_len = 0;
 /**
 * main - monty interpreter
 * @ac: argument counter

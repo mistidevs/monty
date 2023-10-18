@@ -15,7 +15,7 @@ unsigned int i = 0;
 
 curr = stack;
 
-while (i < stack_len)
+while (curr != NULL)
 {
 	next = curr->next;
 	free(curr);
