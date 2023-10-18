@@ -51,6 +51,7 @@ int count_words(char *str, const char *delimiter);
 
 /***** FILE PROCESSING ****/
 char *open_file(char *filename);
+char *replace_double_newline(char *str);
 
 /***** OPS **********/
 void (*op_select(char *opcode))(stack_t **, unsigned int);

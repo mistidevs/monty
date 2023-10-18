@@ -50,3 +50,38 @@ if (close(fd) == -1)
 
 return (buffer);
 }
+
+/**
+* replace_double_newline - repacing to new line chars
+* in a row with a null byte
+* @str: string to check
+*
+* Return: string after alteration
+*/
+
+char *replace_double_newline(char *str)
+{
+char *filtered;
+int i = 0, j;
+
+while (str[i] != '\0')
+{
+	if (str[i] == '\n' && str[i + 1] == '\n')
+	{
+		filtered = malloc((i + 1) * sizeof(char));
+		if (filtered == NULL)
+		{
+			fprintf(stderr, "Error: malloc failed");
+			return (NULL);
+		}
+		for (j = 0; j < i; j++)
+			filtered[j] = str[j];
+		filtered[i] = '\0';
+		free(str);
+		return (filtered);
+	}
+	i++;
+}
+
+return (str);
+}

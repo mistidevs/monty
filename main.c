@@ -10,7 +10,7 @@
 
 int main(int ac, char **av)
 {
-char *raw;
+char *raw, *filter;
 char **commands;
 
 if (ac != 2)
@@ -23,14 +23,16 @@ raw = open_file(av[1]);
 if (raw == NULL)
 	exit(EXIT_FAILURE);
 
-commands = strtow(raw, "\n");
+filter = replace_double_newline(raw);
+printf("%s", filter);
+commands = strtow(filter, "\n");
 if (commands == NULL)
 {
 	fprintf(stderr, "Error: malloc failed\n");
-	free(raw);
+	free(filter);
 	exit(EXIT_FAILURE);
 }
-free(raw);
+free(filter);
 
 if (interpret(commands) == 1)
 	exit(EXIT_FAILURE);

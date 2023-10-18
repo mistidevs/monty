@@ -1,6 +1,7 @@
 push 32
 push 34
 pall
-nop
-pop
+    nop
+   nop    
+    pop
 pall
