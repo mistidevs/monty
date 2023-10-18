@@ -3,7 +3,6 @@
 /**
 * free_stack - frees a stack
 * @stack: pointer to top
-* @len: length of the stack to free
 *
 * Return: void
 */

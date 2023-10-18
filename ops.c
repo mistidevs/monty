@@ -64,6 +64,7 @@ else
 /**
 * pall - printing a stack
 * @stack: pointer to top
+* @line_number: unused
 *
 * Return: void
 */
