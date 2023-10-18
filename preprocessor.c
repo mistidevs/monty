@@ -9,7 +9,7 @@
 
 int check_new_line(char *line)
 {
-if ((line[0] == '\0' && strlen(line) == 1) || (strcmp(line, " ") == 0))
+if (line[0] == '\0' || strlen(line) == 1)
 	return (0);
 
 return (1);
@@ -92,7 +92,16 @@ char **strtow(char *str, const char *d)
 		if (is_delim(str[i], d))
 		{
 			if (i > 0 && is_delim(str[i - 1], d))
-				s[j++] = " ";
+			{
+				s[j] = malloc(2 * sizeof(char));
+				if (!s[j])
+				{
+					for (k = 0; k < j; k++)
+						free(s[k]);
+					free(s);
+					return (NULL); }
+				s[j][0] = ' ', s[j][1] = '\0', j++;
+			}
 		}
 		else
 		{
@@ -105,7 +114,7 @@ char **strtow(char *str, const char *d)
 				for (k = 0; k < j; k++)
 					free(s[k]);
 				free(s);
-			return (NULL);
+				return (NULL);
 			}
 			for (m = 0; m < k; m++)
 				s[j][m] = str[i++];

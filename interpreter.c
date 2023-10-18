@@ -14,10 +14,6 @@ char *command, **ops;
 int i;
 for (i = 0; commands[i] != NULL; i++)
 {
-	if (check_new_line(commands[i]) == 0)
-	{
-		free_op_list(commands), free_stack(stack);
-		return (1); }
 	command = unpad(commands[i]);
 	if (*command == '\0')
 	{

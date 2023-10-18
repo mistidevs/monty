@@ -34,8 +34,11 @@ if (commands == NULL)
 free(raw);
 
 for (i = 0; commands[i] != NULL; i++)
+{
+	if (commands[i][0] == '\0')
+		printf("Empty\n");
 	printf("%s\n", commands[i]);
-
+}
 if (interpret(commands) == 1)
 	exit(EXIT_FAILURE);
 
