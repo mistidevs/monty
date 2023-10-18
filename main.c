@@ -34,11 +34,6 @@ if (commands == NULL)
 }
 free(raw);
 
-for (i = 0; commands[i] != NULL; i++)
-{
-	printf("%s\n", commands[i]);
-}
-printf("%d", i);
 stack = NULL;
 for (i = 0; commands[i] != NULL; i++)
 {
