@@ -9,7 +9,7 @@
 
 int check_new_line(char *line)
 {
-if ((line[0] == '\0' && strlen(line) == 1) || strlen(line) == 0)
+if ((line[0] == '\0' && strlen(line) == 1) || (strcmp(line, " ") == 0))
 	return (0);
 
 return (1);
@@ -92,7 +92,7 @@ char **strtow(char *str, const char *d)
 		if (is_delim(str[i], d))
 		{
 			if (i > 0 && is_delim(str[i - 1], d))
-				s[j++] = "";
+				s[j++] = " ";
 		}
 		else
 		{

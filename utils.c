@@ -80,7 +80,8 @@ int i;
 
 for (i = 0; op_list[i] != NULL; i++)
 {
-	free(op_list[i]);
+	if (op_list[i] != " ")
+		free(op_list[i]);
 }
 
 free(op_list);
