@@ -23,7 +23,7 @@ if (fd == -1)
 file_size = lseek(fd, 0, SEEK_END);
 if (file_size == -1)
 {
-	fprintf(stderr, "lseek failed");
+	perror("lseek");
 	return (NULL);
 }
 lseek(fd, 0, SEEK_SET);

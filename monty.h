@@ -66,7 +66,7 @@ void swap(stack_t **stack, unsigned int line_number);
 /******* UTILITIES **********/
 void free_stack(stack_t *stack);
 int push_check(char *var);
-int op_check(char *opcode, char *arg);
+int op_check(char *opcode, char *arg, char *err);
 void free_op_list(char **op_list);
 
 /***** INTERPRETER *****/

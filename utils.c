@@ -49,11 +49,12 @@ return (0);
 * op_check - checking if an opcode is valid
 * @opcode: opcode to check
 * @arg: second argument
+* @err: argument showing error
 *
 * Return: 0 if successful; 1 if it fails
 */
 
-int op_check(char *opcode, char *arg)
+int op_check(char *opcode, char *arg, char *err)
 {
 int i;
 
@@ -61,7 +62,16 @@ char *op_codes[] = {"push", "pall", "pint", "pop",
 			"swap", "nop", NULL};
 
 if (arg != NULL && (strcmp(opcode, "push") != 0))
-	return (1);
+{
+	fprintf(stderr, "Error: Too many arguments to %s\n", opcode);
+	exit(EXIT_FAILURE);
+}
+
+if (err != NULL)
+{
+	fprintf(stderr, "Error: Too many arguments to push\n");
+	exit(EXIT_FAILURE);
+}
 
 for (i = 0; op_codes[i] != NULL; i++)
 {
