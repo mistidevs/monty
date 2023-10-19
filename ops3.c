@@ -68,3 +68,33 @@ void comment(stack_t **stack, unsigned int line_number)
 (void)line_number;
 return;
 }
+
+/**
+* pchar - printing the ascii value of a digit
+* @stack: pointer to top
+* @line_number: line number we are on
+*
+* Return: void
+*/
+
+void pchar(stack_t **stack, unsigned int line_number)
+{
+int ascii_val;
+
+if (stack == NULL || *stack == NULL)
+{
+	fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+	exit(EXIT_FAILURE);
+}
+
+ascii_val = (*stack)->n;
+
+if (ascii_val < 0 || ascii_val > 127)
+{
+	fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+	exit(EXIT_FAILURE);
+}
+
+printf("%c\n", ascii_val);
+}
+
