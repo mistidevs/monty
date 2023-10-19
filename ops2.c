@@ -29,6 +29,30 @@ temp->prev = NULL;
 }
 
 /**
+* add: adding the top two elements of a stack
+* then removing the top eleement
+* @stack: pointer to the top element
+* @line_number: the line_number we are on
+*
+* Return: void
+*/
+
+void add(stack_t **stack, unsigned int line_number)
+{
+stack_t *temp;
+
+if (!stack || !(*stack) || !((*stack)->next))
+{
+	fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+	exit(EXIT_FAILURE);
+}
+
+temp = (*stack)->next;
+temp->n += (*stack)->n;
+pop(stack, line_number);
+}
+
+/**
 * nop - does nothing
 * @stack: pointer to top
 * @line_number: unused
