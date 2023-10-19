@@ -83,7 +83,7 @@ stack_t *temp;
 
 if (!stack || !(*stack) || !((*stack)->next))
 {
-	fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+	fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 	exit(EXIT_FAILURE);
 }
 
@@ -107,7 +107,7 @@ stack_t *temp;
 
 if (!stack || !(*stack) || !((*stack)->next))
 {
-	fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+	fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 	exit(EXIT_FAILURE);
 }
 
