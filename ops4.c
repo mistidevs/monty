@@ -46,20 +46,18 @@ stack_t *temp;
 
 if (!stack || !*stack || !(*stack)->next)
 {
-	return;
-}
+	temp = *stack;
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
 
-temp = *stack;
-while (temp->next != NULL)
-{
-	temp = temp->next;
+	temp->prev->next = NULL;
+	temp->prev = NULL;
+	temp->next = *stack;
+	(*stack)->prev = temp;
+	*stack = temp;
 }
-
-temp->prev->next = NULL;
-temp->prev = NULL;
-temp->next = *stack;
-(*stack)->prev = temp;
-*stack = temp;
 }
 
 /**
