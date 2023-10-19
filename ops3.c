@@ -98,3 +98,37 @@ if (ascii_val < 0 || ascii_val > 127)
 printf("%c\n", ascii_val);
 }
 
+/**
+* pstr - printing the ascii values of digits in a stack
+* @stack: pointer to top
+* @line_number: line number we are on
+*
+* Return: void
+*/
+
+void pstr(stack_t **stack, unsigned int line_number)
+{
+stack_t *temp;
+(void)line_number;
+
+if (!stack || !*stack)
+{
+	printf("\n");
+	return;
+}
+
+temp = *stack;
+while (temp != NULL)
+{
+	if (temp->n > 0 && temp->n < 128)
+	{
+		printf("%c", temp->n);
+	}
+	else
+	{
+		break;
+	}
+	temp = temp->next;
+}
+printf("\n");
+}
