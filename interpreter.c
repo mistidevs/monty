@@ -29,7 +29,7 @@ for (i = 0; commands[i] != NULL; i++)
 		fprintf(stderr, "Error: malloc failed\n"), free_op_list(commands);
 		free_stack(stack), free(command);
 		return (1); }
-	if (op_check(ops[0]) == 1)
+	if (op_check(ops[0], ops[1]) == 1)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", (i + 1), ops[0]);
 		free_op_list(commands), free_op_list(ops), free_stack(stack), free(command);

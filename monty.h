@@ -64,7 +64,7 @@ void nop(stack_t **stack,
 /******* UTILITIES **********/
 void free_stack(stack_t *stack);
 int push_check(char *var);
-int op_check(char *opcode);
+int op_check(char *opcode, char *arg);
 void free_op_list(char **op_list);
 
 /***** INTERPRETER *****/

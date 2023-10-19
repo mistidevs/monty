@@ -52,11 +52,14 @@ return (0);
 * Return: 0 if successful; 1 if it fails
 */
 
-int op_check(char *opcode)
+int op_check(char *opcode, char *arg)
 {
 int i;
 
 char *op_codes[] = {"push", "pall", "pint", "pop", "nop", NULL};
+
+if (arg != NULL && (strcmp(opcode, "push") != 0))
+	return (1);
 
 for (i = 0; op_codes[i] != NULL; i++)
 {
