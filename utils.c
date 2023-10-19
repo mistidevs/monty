@@ -48,6 +48,7 @@ return (0);
 /**
 * op_check - checking if an opcode is valid
 * @opcode: opcode to check
+* @arg: second argument
 *
 * Return: 0 if successful; 1 if it fails
 */
