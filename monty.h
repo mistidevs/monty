@@ -38,9 +38,25 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+* enum mode_s - different modes of the interpreter
+* @STACK: stack mode
+* @QUEUE: queue mode
+*
+* Description: enum mode_s and its
+* values
+*/
+
+typedef enum mode_s
+{
+    STACK,
+    QUEUE
+} modes_t;
+
 /**** EXTERNS ***/
 extern unsigned int line_number;
 extern stack_t *stack;
+extern modes_t mode;
 
 /**** PREPROCESSOR *****/
 int check_new_line(char *line);
@@ -72,6 +88,8 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void stack_change(stack_t **stack, unsigned int line_number);
+void queue_change(stack_t **stack, unsigned int line_number);
 
 /******* UTILITIES **********/
 void free_stack(stack_t *stack);

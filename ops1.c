@@ -15,7 +15,7 @@ instruction_t instructions[] = {
 	{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"div", divide},
 	{"nop", nop}, {"swap", swap}, {"add", add}, {"sub", sub}, {"#", comment},
 	{"mul", mul}, {"mod", mod}, {"pchar", pchar}, {"pstr", pstr}, {"rotl", rotl},
-	{"rotr", rotr}, {NULL, NULL}
+	{"rotr", rotr}, {"stack", stack_change}, {"queue", queue_change}, {NULL, NULL}
 };
 
 for (i = 0; instructions[i].opcode != NULL; i++)
@@ -62,6 +62,9 @@ else
 	new_node->next = temp;
 	temp->prev = new_node;
 }
+
+if (mode == QUEUE)
+	rotl(stack, line_number);
 }
 
 /**

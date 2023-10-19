@@ -1,5 +1,7 @@
 #include "monty.h"
 
+modes_t mode = STACK;
+
 /**
 * rotl - rotating a stack making the top the bottom
 * @stack: pointer to top
@@ -60,4 +62,36 @@ temp->prev = NULL;
 temp->next = *stack;
 (*stack)->prev = temp;
 *stack = temp;
+}
+
+/**
+* stack - setting the mode to STACK
+* @stack: pointer to top
+* @line_number: unused
+*
+* Return: void
+*/
+
+void stack_change(stack_t **stack, unsigned int line_number)
+{
+    (void)stack;
+    (void)line_number;
+
+    mode = STACK;
+}
+
+/**
+* queue - setting the mode to QUEUE
+* @stack: pointer to top
+* @line_number: unused
+*
+* Return: void
+*/
+
+void queue_change(stack_t **stack, unsigned int line_number)
+{
+    (void)stack;
+    (void)line_number;
+
+    mode = QUEUE;
 }
