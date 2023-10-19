@@ -17,12 +17,15 @@ stack_t *stack = NULL;
 
 while (getline(&line, &len, fp) != -1)
 {
-	printf("%s", line);
 	if (line[0] == '\0' || line[0] == '\n')
-		return (0);
+	{
+		i++;
+		continue; }
 	command = unpad(line);
 	if (command[0] == '\0' || command[0] == '\n')
-		return (0);
+	{
+		i++;
+		continue; }
 	ops = strtow(command, " ");
 	if (ops == NULL)
 	{
