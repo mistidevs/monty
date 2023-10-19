@@ -1,3 +1,5 @@
+#define _POSIX_C_SOURCE 200809L
+#include <stdio.h>
 #include "monty.h"
 
 /**
@@ -10,8 +12,7 @@
 
 int main(int ac, char **av)
 {
-char *raw, *filter;
-char **commands;
+FILE *fp;
 
 if (ac != 2)
 {
@@ -19,27 +20,18 @@ if (ac != 2)
 	exit(EXIT_FAILURE);
 }
 
-raw = open_file(av[1]);
-if (raw == NULL)
-	exit(EXIT_FAILURE);
-
-filter = replace_double_newline(raw);
-if (filter == NULL)
+fp = fopen(av[1], "r");
+if (fp == NULL)
 {
-	free(raw);
-	return (0);
-}
-commands = strtow(filter, "\n");
-if (commands == NULL)
-{
-	fprintf(stderr, "Error: malloc failed\n");
-	free(filter);
+	fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 	exit(EXIT_FAILURE);
 }
-free(filter);
 
-if (interpret(commands) == 1)
+if (interpret(fp) == 1)
 	exit(EXIT_FAILURE);
+
+
+fclose(fp);
 
 return (0);
 }

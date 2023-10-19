@@ -48,24 +48,16 @@ return (0);
 /**
 * op_check - checking if an opcode is valid
 * @opcode: opcode to check
-* @arg: second argument
-* @err: argument showing error
 *
 * Return: 0 if successful; 1 if it fails
 */
 
-int op_check(char *opcode, char *arg, char *err)
+int op_check(char *opcode)
 {
 int i;
 
 char *op_codes[] = {"push", "pall", "pint", "pop", "sub", "#",
 			"swap", "nop", "add", "div", "mul", "mod", NULL};
-
-if (arg != NULL && strcmp(opcode, "push") != 0 && strcmp(opcode, "#") != 0)
-	return (1);
-
-if (err != NULL)
-	return (1);
 
 for (i = 0; op_codes[i] != NULL; i++)
 {

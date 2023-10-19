@@ -38,6 +38,7 @@ if (commands == NULL)
 }
 free(filter);
 
+printf("%s\n", commands[0]);
 if (interpret(commands) == 1)
 	exit(EXIT_FAILURE);
 

@@ -72,10 +72,10 @@ void comment(stack_t **stack, unsigned int line_number);
 /******* UTILITIES **********/
 void free_stack(stack_t *stack);
 int push_check(char *var);
-int op_check(char *opcode, char *arg, char *err);
+int op_check(char *opcode);
 void free_op_list(char **op_list);
 
 /***** INTERPRETER *****/
-int interpret(char **commands);
+int interpret(FILE *fp);
 
 #endif

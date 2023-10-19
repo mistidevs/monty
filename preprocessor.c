@@ -72,41 +72,38 @@ return (new_line);
  * Return: a pointer to an array of strings, or NULL on failure
  */
 
-char **strtow(char *str, const char *d)
-{
-	int i, j, k, m, numwords = 0;
-	char **s;
+char **strtow(char *str, const char *d) {
+int num_words, i, j;
+char **words, *token;
 
-	if (str == NULL || str[0] == '\0')
-		return (NULL);
-	if (!d)
-		d = " ";
-	numwords = count_words(str, d);
-	if (numwords == 0)
-		return (NULL);
-	s = malloc((1 + numwords) * sizeof(char *));
-	if (!s)
-		return (NULL);
-	for (i = 0, j = 0; i < (int)strlen(str); i++)
-	{
-		k = 0;
-		while (!is_delim(str[i + k], d) && str[i + k])
-			k++;
-		s[j] = malloc((k + 1) * sizeof(char));
-		if (!s[j])
-		{
-			for (k = 0; k < j; k++)
-				free(s[k]);
-			free(s);
-			return (NULL);
+num_words = count_words(str, d);
+if (num_words == 0)
+	return NULL;
+
+
+words = malloc((num_words + 1) * sizeof(char *));
+if (words == NULL)
+	return NULL;
+
+token = strtok(str, d);
+i = 0;
+while (token != NULL)
+{
+	words[i] = malloc((strlen(token) + 1) * sizeof(char));
+	if (words[i] == NULL) {
+		for (j = 0; j < i; j++) {
+			free(words[j]);
 		}
-		for (m = 0; m < k; m++)
-			s[j][m] = str[i++];
-		s[j][m] = '\0';
-		j++;
-	}
-	s[j] = NULL;
-	return (s);
+	free(words);
+	return NULL;
+    	}
+	strcpy(words[i], token);
+	token = strtok(NULL, d);
+	i++;
+}
+
+words[i] = NULL;
+return words;
 }
 
 /**
