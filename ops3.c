@@ -114,21 +114,22 @@ stack_t *temp;
 if (!stack || !*stack)
 {
 	printf("\n");
-	return;
 }
-
-temp = *stack;
-while (temp != NULL)
+else
 {
-	if (temp->n > 0 && temp->n < 128)
+	temp = *stack;
+	while (temp != NULL)
 	{
-		printf("%c", temp->n);
+		if (temp->n > 0 && temp->n < 128)
+		{
+			printf("%c", temp->n);
+		}
+		else
+		{
+				break;
+		}
+		temp = temp->next;
 	}
-	else
-	{
-		break;
-	}
-	temp = temp->next;
-}
 printf("\n");
+}
 }
