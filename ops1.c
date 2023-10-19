@@ -13,7 +13,8 @@ int i;
 
 instruction_t instructions[] = {
 	{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"div", divide},
-	{"nop", nop}, {"swap", swap}, {"add", add}, {"sub", sub}, {NULL, NULL}
+	{"nop", nop}, {"swap", swap}, {"add", add}, {"sub", sub},
+	{"mul", mul}, {"mod", mod}, {NULL, NULL}
 };
 
 for (i = 0; instructions[i].opcode != NULL; i++)
