@@ -24,6 +24,11 @@ if (raw == NULL)
 	exit(EXIT_FAILURE);
 
 filter = replace_double_newline(raw);
+if (filter == NULL)
+{
+	free(raw);
+	return (0);
+}
 commands = strtow(filter, "\n");
 if (commands == NULL)
 {

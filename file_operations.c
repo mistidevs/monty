@@ -23,7 +23,7 @@ if (fd == -1)
 file_size = lseek(fd, 0, SEEK_END);
 if (file_size == -1)
 {
-	perror("lseek");
+	fprintf(stderr, "lseek failed");
 	return (NULL);
 }
 lseek(fd, 0, SEEK_SET);
@@ -63,6 +63,9 @@ char *replace_double_newline(char *str)
 {
 char *filtered;
 int i = 0, j;
+
+if (str[i] == '\n')
+	return (NULL);
 
 while (str[i] != '\0')
 {
