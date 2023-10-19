@@ -53,3 +53,18 @@ if ((*stack)->n == 0)
 temp->n %= (*stack)->n;
 pop(stack, line_number);
 }
+
+/**
+* comment - handling comments
+* @stack: unused
+* @line_number: unused
+*
+* Return: void
+*/
+
+void comment(stack_t **stack, unsigned int line_number)
+{
+(void)stack;
+(void)line_number;
+return;
+}

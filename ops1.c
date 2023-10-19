@@ -13,7 +13,7 @@ int i;
 
 instruction_t instructions[] = {
 	{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"div", divide},
-	{"nop", nop}, {"swap", swap}, {"add", add}, {"sub", sub},
+	{"nop", nop}, {"swap", swap}, {"add", add}, {"sub", sub}, {"#", comment},
 	{"mul", mul}, {"mod", mod}, {NULL, NULL}
 };
 

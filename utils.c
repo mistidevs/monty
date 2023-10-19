@@ -58,20 +58,14 @@ int op_check(char *opcode, char *arg, char *err)
 {
 int i;
 
-char *op_codes[] = {"push", "pall", "pint", "pop", "sub",
+char *op_codes[] = {"push", "pall", "pint", "pop", "sub", "#",
 			"swap", "nop", "add", "div", "mul", "mod", NULL};
 
-if (arg != NULL && (strcmp(opcode, "push") != 0))
-{
-	fprintf(stderr, "Error: Too many arguments to %s\n", opcode);
-	exit(EXIT_FAILURE);
-}
+if (arg != NULL && strcmp(opcode, "push") != 0 && strcmp(opcode, "#") != 0)
+	return (1);
 
 if (err != NULL)
-{
-	fprintf(stderr, "Error: Too many arguments to push\n");
-	exit(EXIT_FAILURE);
-}
+	return (1);
 
 for (i = 0; op_codes[i] != NULL; i++)
 {
