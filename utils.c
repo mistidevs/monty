@@ -58,7 +58,7 @@ int op_check(char *opcode, char *arg, char *err)
 {
 int i;
 
-char *op_codes[] = {"push", "pall", "pint", "pop",
+char *op_codes[] = {"push", "pall", "pint", "pop", "sub",
 			"swap", "nop", "add", NULL};
 
 if (arg != NULL && (strcmp(opcode, "push") != 0))
