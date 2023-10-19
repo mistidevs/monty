@@ -61,7 +61,7 @@ if (!stack || !*stack || !(*stack)->next)
 }
 
 /**
-* stack - setting the mode to STACK
+* stack_change - setting the mode to STACK
 * @stack: pointer to top
 * @line_number: unused
 *
@@ -70,14 +70,14 @@ if (!stack || !*stack || !(*stack)->next)
 
 void stack_change(stack_t **stack, unsigned int line_number)
 {
-    (void)stack;
-    (void)line_number;
+(void)stack;
+(void)line_number;
 
-    mode = STACK;
+mode = STACK;
 }
 
 /**
-* queue - setting the mode to QUEUE
+* queue_change - setting the mode to QUEUE
 * @stack: pointer to top
 * @line_number: unused
 *
@@ -86,8 +86,8 @@ void stack_change(stack_t **stack, unsigned int line_number)
 
 void queue_change(stack_t **stack, unsigned int line_number)
 {
-    (void)stack;
-    (void)line_number;
+(void)stack;
+(void)line_number;
 
-    mode = QUEUE;
+mode = QUEUE;
 }
