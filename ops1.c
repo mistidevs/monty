@@ -125,5 +125,7 @@ if (*stack == NULL || stack == NULL)
 
 top = *stack;
 *stack = top->next;
+if (*stack)
+	(*stack)->prev = NULL;
 free(top);
 }
