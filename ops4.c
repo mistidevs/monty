@@ -15,22 +15,20 @@ void rotl(stack_t **stack, unsigned int line_number)
 stack_t *temp;
 (void)line_number;
 
-if (!stack || !*stack || !(*stack)->next)
+if (stack && *stack && (*stack)->next)
 {
-	return;
-}
+	temp = *stack;
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
 
-temp = *stack;
-while (temp->next != NULL)
-{
-	temp = temp->next;
+	temp->next = *stack;
+	(*stack)->prev = temp;
+	*stack = (*stack)->next;
+	(*stack)->prev->next = NULL;
+	(*stack)->prev = NULL;
 }
-
-temp->next = *stack;
-(*stack)->prev = temp;
-*stack = (*stack)->next;
-(*stack)->prev->next = NULL;
-(*stack)->prev = NULL;
 }
 
 /**
