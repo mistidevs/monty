@@ -48,7 +48,7 @@ if (new_node == NULL)
 new_node->n = line_number;
 new_node->prev = NULL;
 
-if (*stack == NULL)
+if (*stack == NULL || stack == NULL)
 {
 	*stack = new_node;
 	new_node->next = NULL;
@@ -75,8 +75,8 @@ void pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 stack_t *curr;
 unsigned int i;
 
-if (*stack == NULL)
-	exit(EXIT_FAILURE);
+if (*stack == NULL || stack == NULL)
+	return;
 
 curr = *stack;
 for (i = 0; curr != NULL; i++)
@@ -96,7 +96,7 @@ for (i = 0; curr != NULL; i++)
 
 void pint(stack_t **stack, unsigned int line_number)
 {
-if (*stack == NULL)
+if (*stack == NULL || stack == NULL)
 {
 	fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 	exit(EXIT_FAILURE);
@@ -117,7 +117,7 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 stack_t *top;
 
-if (*stack == NULL)
+if (*stack == NULL || stack == NULL)
 {
 	fprintf(stderr, "L%d: can't pop, stack empty\n", line_number);
 	exit(EXIT_FAILURE);
