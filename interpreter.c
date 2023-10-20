@@ -38,7 +38,7 @@ while (getline(&line, &len, fp) != -1)
 		return (1); }
 	if (strcmp(ops[0], "push") == 0)
 	{
-		if (ops[1][0] == '-')
+		if (ops[1] != NULL && ops[1][0] == '-')
 		{
 			i++;
 			continue;
