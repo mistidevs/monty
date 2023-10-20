@@ -18,12 +18,12 @@ while (getline(&line, &len, fp) != -1)
 {
 	if (line[0] == '\0' || line[0] == '\n')
 	{
-		i++;
+		i++, free(line), line = NULL, len = 0;
 		continue; }
 	command = unpad(line);
 	if (command[0] == '\0' || command[0] == '\n')
 	{
-		i++;
+		i++, free(command), free(line), line = NULL, len = 0;
 		continue; }
 	ops = strtow(command, " ");
 	if (ops == NULL)
@@ -38,9 +38,14 @@ while (getline(&line, &len, fp) != -1)
 		return (1); }
 	if (strcmp(ops[0], "push") == 0)
 	{
-		if (push_check(ops[1]) == 1)
+		if (ops[1][0] == '-')
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", i + 1);
+			i++;
+			continue;
+		}
+		else if (push_check(ops[1]) == 1)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", i + 1), i++;
 			free_op_list(ops), free(command), free(line), free_stack(stack);
 			return (1); }
 	}
