@@ -72,6 +72,7 @@ char *replace_double_newline(char *str);
 /***** OPS **********/
 void (*op_select(char *opcode))(stack_t **, unsigned int);
 void push(stack_t **stack, unsigned int line_number);
+void push_neg(stack_t **stack, int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);

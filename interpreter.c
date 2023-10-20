@@ -40,7 +40,7 @@ while (getline(&line, &len, fp) != -1)
 	{
 		if (ops[1] != NULL && ops[1][0] == '-')
 		{
-			i++;
+			push_neg(&stack, atoi(ops[1])), i++;
 			continue;
 		}
 		else if (push_check(ops[1]) == 1)
