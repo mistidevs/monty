@@ -16,12 +16,12 @@ int i = 0;
 stack_t *stack = NULL;
 while (getline(&line, &len, fp) != -1)
 {
-	if (line[0] == '\0' || line[0] == '\n')
+	if (line[0] == '\0' || line[0] == '\n' || line[0] == '#')
 	{
 		i++, free(line), line = NULL, len = 0;
 		continue; }
 	command = unpad(line);
-	if (command[0] == '\0' || command[0] == '\n')
+	if (command[0] == '\0' || command[0] == '\n' || command[0] == '#')
 	{
 		i++, free(command), free(line), line = NULL, len = 0;
 		continue; }
