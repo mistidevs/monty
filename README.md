@@ -6,7 +6,7 @@ Nonetheless, after you have completed the project and for those not affiliated i
 
 <h2>Abstract</h2>
 <p>
-  The interpreter is built using the C programming language. It is built in collaboration with ALX Africa hence is Betty Compliant and uses C90 standard code. There is a precompiled interpreter that handles almost all(I desire to claim all but as we all know software fails) edge cases. It outputs sensible code errors in case a coomand if invalid Monty syntax. To compile your code in case you modify the source code:
+  The interpreter is built using the C programming language. It is built in collaboration with ALX Africa hence is Betty Compliant and uses C90 standard code. There is a precompiled interpreter that handles almost all(I desire to claim all but as we all know software fails) edge cases. It outputs sensible code errors in case a coomand if invalid Monty syntax is placed in a file. It stops execution at that point. It also handles comments. To compile your code in case you modify the source code:
 
 ```
  gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
