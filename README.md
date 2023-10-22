@@ -3,7 +3,8 @@
 <p>Even though this project is Open Source and under Creative Commons it is <b>strictly forbidden</b> to use this code for the ALX Project- 0x19. C - Stacks, Queues - LIFO, FIFO<br>
 As of October 2023 the code meets the requirements of the checker. Notwithstanding, it is immoral to plagiarise this work in order to get 200% in the project. Morality, is more important than some crazy high score. Kimba is watching.<br>
 Nonetheless, after you have completed the project and for those not affiliated in any way to an ALX Software Engineering program the code is open for modification as your heart and mind pleases. </p>
-<h2>Abstract/h2>
+
+<h2>Abstract</h2>
 <p>
   The interpreter is built using the C programming language. It is built in collaboration with ALX Africa hence is Betty Compliant and uses C90 standard code. There is a precompiled interpreter that handles almost all(I desire to claim all but as we all know software fails) edge cases. It outputs sensible code errors in case a coomand if invalid Monty syntax. To compile your code in case you modify the source code:
 
